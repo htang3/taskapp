@@ -4,11 +4,6 @@ import axios from 'axios'
 class TaskListEdit extends Component {
     constructor(props){
         super(props)
-        this.nameHandler=this.nameHandler.bind(this);
-        this.titleHandler=this.titleHandler.bind(this);
-        this.descriptionHandler=this.descriptionHandler.bind(this);
-        this.durationHandler=this.durationHandler.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
         this.state ={
             name: "",
             title: "",
@@ -71,18 +66,24 @@ class TaskListEdit extends Component {
              duration:this.state.duration
         } 
         //
+        if(this.state.name===""||this.state.title===""||this.state.decription===""||this.state.duration<1){
+            alert("Duration > 0 and all field must be filled");
+            this.props.history.push("/add")
+        }
+        else {
          axios.post('http://localhost:4000/task/update/'+this.props.match.params.id, task)
         .then(res => console.log(res.data))
         this.setState({
             submitted: true
         })
         this.props.history.push("/")
+        }
     }
     render(){
         return(
             <div>
                 <h2>Update Task</h2>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit.bind(this)}>
                     <div>
                         {/* <label>Name</label> */}
                         {/* <select className='form-control' ref="firstnameInput" value={this.state.name}
@@ -100,7 +101,7 @@ class TaskListEdit extends Component {
                              <input type="text" 
                                 className='form-control'
                                 value= {this.state.name}
-                                onChange={this.nameHandler}/>
+                                onChange={this.nameHandler.bind(this)}/>
 
                         </div>
                         <div className='form-group'>
@@ -108,7 +109,7 @@ class TaskListEdit extends Component {
                              <input type="text" 
                                 className='form-control'
                                 value= {this.state.title}
-                                onChange={this.titleHandler}/>
+                                onChange={this.titleHandler.bind(this)}/>
 
                         </div>
                         <div className='form-group'>
@@ -116,7 +117,7 @@ class TaskListEdit extends Component {
                              <input type="text" 
                                 className='form-control'
                                 value= {this.state.description}
-                                onChange={this.descriptionHandler}/>
+                                onChange={this.descriptionHandler.bind(this)}/>
 
                         </div>
                         <div className='form-group'>
@@ -124,7 +125,7 @@ class TaskListEdit extends Component {
                              <input type="tet" 
                                 className='form-control'
                                 value= {this.state.duration}
-                                onChange={this.durationHandler}/>
+                                onChange={this.durationHandler.bind(this)}/>
 
                         </div>
                     </div>
