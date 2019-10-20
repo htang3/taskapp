@@ -19,9 +19,9 @@ import {Link} from 'react-router-dom';
                     <li className="nav-item">
                        <Link className="nav-link" to="/add">Add Task </Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                           <Link className="nav-link" to="/user">Add User </Link>
-                    </li>
+                    </li> */}
                     </ul>
                 </div>
             </nav>

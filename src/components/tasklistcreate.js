@@ -19,19 +19,19 @@ class TaskListCreate extends Component {
         }
     }
     //call this lifecycle before anything display
-    componentDidMount() {
-      axios.get("http://localhost:4000/user")
-      .then(response => {
-          if (response.data.length>0){
-              this.setState({
-                  users: response.data.map(user => user.name),
-                  name: response.data[0].name
+    // componentDidMount() {
+    //   axios.get("http://localhost:4000/user")
+    //   .then(response => {
+    //       if (response.data.length>0){
+    //           this.setState({
+    //               users: response.data.map(user => user.name),
+    //               name: response.data[0].name
                 
-              })
+    //           })
               
-          }
-      })
-    }
+    //       }
+    //   })
+    // }
     nameHandler(e) {
         this.setState({
             name: e.target.value
@@ -59,19 +59,28 @@ class TaskListCreate extends Component {
              description:this.state.description,
              duration:this.state.duration
         } 
-        //
-         axios.post('http://localhost:4000/task/addtask', task)
-        .then(res => console.log(res.data))
-        this.props.history.push("/")
+        if(this.state.name==""||this.state.title==""||this.state.decription==""||this.state.duration<0){
+            alert("At least one field is invalid");
+            this.props.history.push("/add")
+        }
+        else {
+            axios.post('http://localhost:4000/task/addtask', task)
+            .then(res => console.log(res.data))
+            this.setState({
+                submitted: true
+            })
+            this.props.history.push("/")
+        }
+        
     }
     render(){
         return(
             <div>
-                <h2>Add new task</h2>
+                <h2>New Task</h2>
                 <form onSubmit={this.onSubmit}>
                     <div>
-                        <label>Name</label>
-                        <select className='form-control' ref="firstnameInput" value={this.state.name}
+                        {/* <label>Name</label> */}
+                        {/* <select className='form-control' ref="firstnameInput" value={this.state.name}
                             onChange={this.nameHandler} required>
                             {
                                 this.state.users.map((user)=>{
@@ -80,9 +89,17 @@ class TaskListCreate extends Component {
                                     </option>
                                 })
                             }
-                        </select>
+                        </select> */}
+                          <div className='form-group'>
+                             <label>Assignee Name</label>
+                             <input type="text" 
+                                className='form-control'
+                                value= {this.state.name}
+                                onChange={this.nameHandler}/>
+
+                        </div>
                         <div className='form-group'>
-                             <label>Title</label>
+                             <label>Task Title</label>
                              <input type="text" 
                                 className='form-control'
                                 value= {this.state.title}
@@ -98,7 +115,7 @@ class TaskListCreate extends Component {
 
                         </div>
                         <div className='form-group'>
-                             <label>Duration</label>
+                             <label>Hour</label>
                              <input type="tet" 
                                 className='form-control'
                                 value= {this.state.duration}
