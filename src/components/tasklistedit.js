@@ -129,7 +129,7 @@ class TaskListEdit extends Component {
 
                         </div>
                     </div>
-                    <button className ="btn btn-secondary"type="submit" value="add task">Update Task</button>
+                    <button className ="btn btn-secondary"type="submit" value="add task">Submit</button>
 
                 </form>
 
