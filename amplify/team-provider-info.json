@@ -1,0 +1,19 @@
+{
+    "taskapp": {
+        "awscloudformation": {
+            "AuthRoleName": "taskappamplify-taskapp-20191022203334-authRole",
+            "UnauthRoleArn": "arn:aws:iam::793012814627:role/taskappamplify-taskapp-20191022203334-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::793012814627:role/taskappamplify-taskapp-20191022203334-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "taskappamplify-taskapp-20191022203334-deployment",
+            "UnauthRoleName": "taskappamplify-taskapp-20191022203334-unauthRole",
+            "StackName": "taskappamplify-taskapp-20191022203334",
+            "StackId": "arn:aws:cloudformation:us-east-1:793012814627:stack/taskappamplify-taskapp-20191022203334/e38a9710-f545-11e9-ad75-0efd3b0202da"
+        },
+        "categories": {
+            "auth": {
+                "taskappamplify68f161c4": {}
+            }
+        }
+    }
+}

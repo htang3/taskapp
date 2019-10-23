@@ -6,14 +6,18 @@ import Navbar from "./components/navbar";
 import TaskList from "./components/tasklist";
 import TaskListEdit from "./components/tasklistedit";
 import TaskListCreate from "./components/tasklistcreate";
-import AddUser from "./components/adduser";
+// import AddUser from "./components/adduser";
 
+//auth
+import Amplify from 'aws-amplify';
+import config from './aws-exports';
+
+import { withAuthenticator } from "aws-amplify-react";
+Amplify.configure(config);
 function App() {
   return (
    
-      <Router>
-      {/* <div className="container"> */}
-       
+      <Router>       
         <Navbar />
         <Switch>
           <Route path="/" exact component={TaskList}/>
@@ -30,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App, true);
