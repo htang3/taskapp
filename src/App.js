@@ -23,8 +23,7 @@ function App() {
           <Route path="/" exact component={TaskList}/>
           <Route path="/edit/:id" exact component={TaskListEdit}/>
           <Route path="/add" exact component={TaskListCreate}/>
-          {/* <Route path="/user" exact component={AddUser}/> */}
-          {/* </div> */}
+        
 
         </Switch>
       
