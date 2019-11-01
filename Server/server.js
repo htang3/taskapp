@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 //connecting database
 
-mongoose.connect("mongodb+srv://htang3:Bunsocola2607@cluster0-urdp8.mongodb.net/test?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://htang3:Bunsocola@cluster0-urdp8.mongodb.net/test?retryWrites=true&w=majority",
 {useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true, dbName:"awstorage"})
 const conn = mongoose.connection;
 conn.once('open', ()=>{
